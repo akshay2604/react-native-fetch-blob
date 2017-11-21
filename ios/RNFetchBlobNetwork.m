@@ -210,6 +210,16 @@ NSOperationQueue *taskQueue;
         defaultConfigObject.timeoutIntervalForRequest = timeout/1000;
     }
     defaultConfigObject.HTTPMaximumConnectionsPerHost = 10;
+	NSString * sharedContainerIdentifier = [self.options valueForKey:@"sharedContainerIdentifier"];
+
+
+	if(sharedContainerIdentifier != nil)
+
+	{
+
+		defaultConfigObject.sharedContainerIdentifier = sharedContainerIdentifier;
+
+	}
     session = [NSURLSession sessionWithConfiguration:defaultConfigObject delegate:self delegateQueue:taskQueue];
     if(path != nil || [self.options valueForKey:CONFIG_USE_TEMP]!= nil)
     {
